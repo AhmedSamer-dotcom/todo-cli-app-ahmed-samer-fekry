@@ -1,0 +1,52 @@
+to_do.py
+
+tasks = []
+
+def add_task(title, description=""):
+    task = {
+        "id": len(tasks) + 1,
+        "title": title,
+        "description": description,
+        "done": False
+    }
+    tasks.append(task)
+    print(f"\n[+] Task added: {task['title']}")
+
+def list_tasks():
+    if not tasks:
+        print("\nNo tasks available.")
+        return
+
+    print("\n--- All Tasks ---")
+    for task in tasks:
+        status = "Done ✔" if task["done"] else "Not Done ✖"
+        print(f"{task['id']}. {task['title']} - {status}")
+        if task['description']:
+            print(f"   Description: {task['description']}")
+
+def main():
+    while True:
+        print("\n--- To-Do CLI ---")
+        print("1. Add Task")
+        print("2. List All Tasks")
+        print("3. Exit")
+
+        choice = input("Enter choice: ")
+
+        if choice == "1":
+            title = input("Task title: ")
+            description = input("Description (optional): ")
+            add_task(title, description)
+
+        elif choice == "2":
+            list_tasks()
+
+        elif choice == "3":
+            print("Goodbye!")
+            break
+
+        else:
+            print("Invalid choice, try again.")
+
+if __name__ == "__main__":
+    main()
