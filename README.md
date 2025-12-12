@@ -1,4 +1,3 @@
-README.md
 
 # To-Do List CLI App
 
